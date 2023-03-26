@@ -1,0 +1,85 @@
+import pandas as pd
+import numpy as np
+import collections
+from matplotlib import pyplot as plt
+import stemgraphic
+from matplotlib.ticker import PercentFormatter
+
+#2.B
+"""
+data = [514, 476, 497, 511, 484, 513, 471, 470, 441, 466, 443, 481, 502, 528, 459, 548, 521, 517, 463, 478, 473, 514, 542, 519, 522, 523, 546, 487, 486, 473, 527, 470, 440, 564, 499, 523, 484, 463, 461, 437, 555, 525, 461, 539, 466, 470, 486, 490, 543, 519]
+
+s = pd.Series(data)
+out = pd.cut(s, bins=[436,452,468,484,500,516,532,548,564])
+print("FREKANS TABLOSU")
+print("   ""Maaş","    ""Frekans")
+print(out.value_counts().sort_index())
+"""
+
+#2.D
+"""
+data = [514, 476, 497, 511, 484, 513, 471, 470, 441, 466, 443, 481, 502, 528, 459, 548, 521, 517, 463, 478, 473, 514, 542, 519, 522, 523, 546, 487, 486, 473, 527, 470, 440, 564, 499, 523, 484, 463, 461, 437, 555, 525, 461, 539, 466, 470, 486, 490, 543, 519]
+x = pd.Series(data)
+sonuc = pd.cut(x, bins=[436,452,468,484,500,516,532,548,564])
+df = sonuc.value_counts().sort_index()
+print("GÖRELİ FREKANS TABLOSU")
+print("   ""Maaş","  ""Göreli Frekans")
+print(df / len(data))
+print("---")
+data= [514, 476, 497, 511, 484, 513, 471, 470, 441, 466, 443, 481, 502, 528, 459, 548, 521, 517,
+463, 478, 473, 514, 542, 519, 522, 523, 546, 487, 486, 473, 527, 470, 440, 564, 499, 523,
+484, 463, 461, 437, 555, 525, 461, 539, 466, 470, 486, 490, 543, 519]
+x = pd.Series(data)
+sonuc = pd.cut(x, bins=[436,452,468,484,500,516,532,548,564])
+df = sonuc.value_counts().sort_index()
+print("YÜZDE FREKANS TABLOSU")
+print("   ""Maaş","  ""Yüzde Frekans")
+print((df / len(data))*100)
+"""
+
+#2.E
+"""
+data = np.array([514, 476, 497, 511, 484, 513, 471, 470, 441, 466, 443, 481, 502, 528, 459, 548, 521, 517, 463, 478, 473, 514, 542, 519, 522, 523, 546, 487, 486, 473, 527, 470, 440, 564, 499, 523, 484, 463, 461, 437, 555, 525, 461, 539, 466, 470, 486, 490, 543, 519])
+fig, ax = plt.subplots(figsize =(10, 6))
+ax.hist(data, bins = [437,453,469,485,501,517,533,549,564],color = "red", hatch='/', edgecolor='k',fill=True , weights=np.ones_like(data)*100 / len(data))
+ax.yaxis.set_major_formatter(PercentFormatter())
+plt.xlabel('Maaşlar')
+plt.ylabel('Yüzde Frekans')
+plt.title('Maaş - Yüzde Frekans Histogram Grafiği')
+
+plt.show()
+"""
+
+#2.G
+"""
+data = [514, 476, 497, 511, 484, 513, 471, 470, 441, 466, 443, 481, 502, 528, 459, 548, 521, 517, 463, 478, 473, 514, 542, 519, 522, 523, 546, 487, 486, 473, 527, 470, 440, 564, 499, 523, 484, 463, 461, 437, 555, 525, 461, 539, 466, 470, 486, 490, 543, 519]
+
+y = pd.Series(data)
+fig, ax = stemgraphic.stem_graphic(y)
+fig.show()
+     #pycharmda şekli göstermiyor
+"""
+
+#2.I
+"""
+data = [514, 476, 497, 511, 484, 513, 471, 470, 441, 466, 443, 481, 502, 528, 459, 548, 521, 517, 463, 478, 473, 514, 542, 519, 522, 523, 546, 487, 486, 473, 527, 470, 440, 564, 499, 523, 484, 463, 461, 437, 555, 525, 461, 539, 466, 470, 486, 490, 543, 519, 600, 620]
+y = pd.Series(data)
+fig, ax = stemgraphic.stem_graphic(y)
+fig.show()
+    #pycharmda şekli göstermiyor
+"""
+
+#3.A
+"""
+frekanslar = [6, 23, 30, 35, 32, 48, 42, 40, 28, 27, 26, 14, 10.8, 4.4, 0.8]
+sinirlar = [6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 35, 40, 45]
+
+fig, ax = plt.subplots()
+ax.hist(sinirlar[:-1], bins=sinirlar, weights=frekanslar, edgecolor='black')
+
+plt.xlabel('Değerler')
+plt.ylabel('Frekans')
+plt.title('Frekans Tablosu Histogramı')
+
+plt.show()
+"""
